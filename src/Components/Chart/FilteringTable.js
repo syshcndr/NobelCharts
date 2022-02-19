@@ -12,11 +12,13 @@ export default function FilteringTable(props) {
         Header: "Name",
         accessor: "name",
         Filter: ColumnFilter,
+        width: 1050,
       },
       {
         Header: "Category",
         accessor: "category",
         Filter: ColumnFilter,
+        width: 1000,
       },
       {
         Header: "Motivation",

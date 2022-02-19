@@ -40,7 +40,6 @@ export default function Chart() {
         <i>{category}</i>
       </h3>
 
-      {apiData.length !== 0 ? <Filter data={apiData} /> : <></>}
       {apiData.length !== 0 ? <FilteringTable data={apiData} /> : <></>}
     </div>
   );

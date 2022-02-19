@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Filter from "./Filter";
 import Table from "./Table";
 import axios from "axios";
-import { useEffect } from "react";
 import FilteringTable from "./FilteringTable";
+
 export default function Chart() {
   const yearSelection = 2022;
   const category = "All";
   const [apiData, setApiData] = useState([]);
-  const [keyword, setKeyword] = useState("");
+  const [test, setTest] = useState(null);
+  console.log(test);
+
   useEffect(() => {
     axios
       .get("https://api.nobelprize.org/v1/prize.json")
@@ -33,10 +35,6 @@ export default function Chart() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleChange = (e) => {
-    setKeyword(e.target.value);
-  };
-
   return (
     <div className="Chart m-5">
       <h3>
@@ -44,8 +42,16 @@ export default function Chart() {
         <i>{category}</i>
       </h3>
 
-      {apiData.length !== 0 ? <Filter data={apiData} /> : <></>}
-      {apiData.length !== 0 ? <FilteringTable data={apiData} /> : <></>}
+      {apiData.length !== 0 ? (
+        <Filter data={apiData} test={test} setTest={setTest} />
+      ) : (
+        <></>
+      )}
+      {apiData.length !== 0 ? (
+        <FilteringTable data={apiData} test={test} setTest={setTest} />
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

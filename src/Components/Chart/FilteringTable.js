@@ -1,5 +1,6 @@
 import React from "react";
-import { useTable, useGlobalFilter } from "react-table";
+import { useTable, useFilters } from "react-table";
+import { ColumnFilter } from "./ColumnFilter";
 import { GlobalFilter } from "./GlobalFilter";
 
 export default function FilteringTable(props) {
@@ -10,16 +11,18 @@ export default function FilteringTable(props) {
       {
         Header: "name",
         accessor: "name",
+        Filter: ColumnFilter,
       },
       {
         Header: "motivation",
         accessor: "motivation",
+        Filter: ColumnFilter,
       },
     ],
     []
   );
 
-  const tableInstance = useTable({ columns, data }, useGlobalFilter);
+  const tableInstance = useTable({ columns, data }, useFilters);
   const {
     getTableProps,
     getTableBodyProps,
@@ -27,14 +30,10 @@ export default function FilteringTable(props) {
     rows,
     prepareRow,
     state,
-    setGlobalFilter,
   } = tableInstance;
-
-  const { globalFilter } = state;
 
   return (
     <>
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <table className="table" {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
@@ -42,6 +41,7 @@ export default function FilteringTable(props) {
               {headerGroup.headers.map((column) => (
                 <th scope="row" {...column.getHeaderProps()}>
                   {column.render("Header")}
+                  <div>{column.canFilter ? column.render("Filter") : null}</div>
                 </th>
               ))}
             </tr>

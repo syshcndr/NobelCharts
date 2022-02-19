@@ -3,8 +3,10 @@ import { useState } from "react";
 
 export default function (props) {
   let apiData = props.data;
-
-  const [yearSelection, setYearSelection] = useState(new Date().getFullYear());
+  let test = props.test;
+  let setTest = props.setTest;
+  setTest("meow");
+  const [yearSelection, setYearSelection] = useState();
   const [categorySelection, setCategorySelection] = useState("All");
 
   let years = [];
@@ -19,7 +21,7 @@ export default function (props) {
     </option>
   ));
 
-  let categories = [];
+  let categories = ["All"];
   for (let data of apiData) {
     if (!categories.includes(data.category)) {
       categories.push(data.category);

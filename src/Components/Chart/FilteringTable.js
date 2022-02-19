@@ -15,6 +15,11 @@ export default function FilteringTable(props) {
         width: 1050,
       },
       {
+        Header: "Year",
+        accessor: "year",
+        Filter: ColumnFilter,
+      },
+      {
         Header: "Category",
         accessor: "category",
         Filter: ColumnFilter,

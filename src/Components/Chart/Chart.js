@@ -11,7 +11,7 @@ export default function Chart() {
   const [keyword, setKeyword] = useState("");
   useEffect(() => {
     axios
-      .get("http://api.nobelprize.org/v1/prize.json")
+      .get("https://api.nobelprize.org/v1/prize.json")
       .then((res) => {
         let data = res.data.prizes;
         console.log(data);

@@ -46,7 +46,7 @@ export default function Chart() {
       </h3>
 
       {apiData.length !== 0 ? <Filter data={apiData} /> : <></>}
-      {apiData.length !== 0 ? <Table data={apiData} /> : <></>}
+      {apiData.length !== 0 ? <FilteringTable data={apiData} /> : <></>}
     </div>
   );
 }

@@ -2,18 +2,21 @@ import React from "react";
 import { useTable } from "react-table";
 
 export default function Table(props) {
-  const data = props.data;
+  const data = React.useMemo(() => props.data, []);
 
-  const columns = [
-    {
-      Header: "name",
-      accessor: "name",
-    },
-    {
-      Header: "motivation",
-      accessor: "motivation",
-    },
-  ];
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "name",
+        accessor: "name",
+      },
+      {
+        Header: "motivation",
+        accessor: "motivation",
+      },
+    ],
+    []
+  );
 
   const tableInstance = useTable({ columns, data });
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

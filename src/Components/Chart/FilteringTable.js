@@ -3,18 +3,21 @@ import { useTable, useGlobalFilter } from "react-table";
 import { GlobalFilter } from "./GlobalFilter";
 
 export default function FilteringTable(props) {
-  const data = props.data;
+  const data = React.useMemo(() => props.data, []);
 
-  const columns = [
-    {
-      Header: "name",
-      accessor: "name",
-    },
-    {
-      Header: "motivation",
-      accessor: "motivation",
-    },
-  ];
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "name",
+        accessor: "name",
+      },
+      {
+        Header: "motivation",
+        accessor: "motivation",
+      },
+    ],
+    []
+  );
 
   const tableInstance = useTable({ columns, data }, useGlobalFilter);
   const {

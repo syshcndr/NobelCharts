@@ -3,9 +3,7 @@ import { useState } from "react";
 
 export default function (props) {
   let apiData = props.data;
-  let test = props.test;
-  let setTest = props.setTest;
-  setTest("meow");
+
   const [yearSelection, setYearSelection] = useState();
   const [categorySelection, setCategorySelection] = useState("All");
 

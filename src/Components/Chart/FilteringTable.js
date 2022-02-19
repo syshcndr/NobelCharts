@@ -9,14 +9,20 @@ export default function FilteringTable(props) {
   const columns = React.useMemo(
     () => [
       {
-        Header: "name",
+        Header: "Name",
         accessor: "name",
         Filter: ColumnFilter,
       },
       {
-        Header: "motivation",
+        Header: "Category",
+        accessor: "category",
+        Filter: ColumnFilter,
+      },
+      {
+        Header: "Motivation",
         accessor: "motivation",
         Filter: ColumnFilter,
+        disableFilters: true,
       },
     ],
     []
@@ -41,6 +47,7 @@ export default function FilteringTable(props) {
               {headerGroup.headers.map((column) => (
                 <th scope="row" {...column.getHeaderProps()}>
                   {column.render("Header")}
+
                   <div>{column.canFilter ? column.render("Filter") : null}</div>
                 </th>
               ))}

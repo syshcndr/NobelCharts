@@ -8,8 +8,6 @@ export default function Chart() {
   const yearSelection = 2022;
   const category = "All";
   const [apiData, setApiData] = useState([]);
-  const [test, setTest] = useState(null);
-  console.log(test);
 
   useEffect(() => {
     axios
@@ -42,16 +40,8 @@ export default function Chart() {
         <i>{category}</i>
       </h3>
 
-      {apiData.length !== 0 ? (
-        <Filter data={apiData} test={test} setTest={setTest} />
-      ) : (
-        <></>
-      )}
-      {apiData.length !== 0 ? (
-        <FilteringTable data={apiData} test={test} setTest={setTest} />
-      ) : (
-        <></>
-      )}
+      {apiData.length !== 0 ? <Filter data={apiData} /> : <></>}
+      {apiData.length !== 0 ? <FilteringTable data={apiData} /> : <></>}
     </div>
   );
 }

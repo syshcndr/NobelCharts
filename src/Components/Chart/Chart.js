@@ -14,7 +14,7 @@ export default function Chart() {
       .get("https://api.nobelprize.org/v1/prize.json")
       .then((res) => {
         let data = res.data.prizes;
-        console.log(data);
+
         let newdata = [];
 
         for (let prize of data) {
@@ -28,7 +28,6 @@ export default function Chart() {
           }
         }
 
-        console.log(newdata);
         setApiData(newdata);
       })
       .catch((err) => console.log(err));

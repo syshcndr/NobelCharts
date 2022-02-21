@@ -27,7 +27,7 @@ export default function Chart() {
             }
           }
         }
-
+        console.log(newdata);
         setApiData(newdata);
       })
       .catch((err) => console.log(err));
@@ -35,7 +35,14 @@ export default function Chart() {
 
   return (
     <div className="Chart m-5">
-      <h3>Showing Winners:</h3>
+      {apiData.length !== 0 ? (
+        <h3>
+          Showing Winners of {apiData[apiData.length - 1].year} -
+          {apiData[0].year}
+        </h3>
+      ) : (
+        <></>
+      )}
 
       {apiData.length !== 0 ? <FilteringTable data={apiData} /> : <></>}
     </div>

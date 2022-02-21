@@ -35,10 +35,7 @@ export default function Chart() {
 
   return (
     <div className="Chart m-5">
-      <h3>
-        Showing Winners:
-        <i>{category}</i>
-      </h3>
+      <h3>Showing Winners:</h3>
 
       {apiData.length !== 0 ? <FilteringTable data={apiData} /> : <></>}
     </div>

@@ -36,7 +36,7 @@ export default function Chart() {
   return (
     <div className="Chart m-5">
       <h3>
-        Showing Winners Of Year <i>{new Date().getFullYear()}</i> Of Category{" "}
+        Showing Winners:
         <i>{category}</i>
       </h3>
 
